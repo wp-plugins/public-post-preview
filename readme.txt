@@ -38,7 +38,7 @@ NOTE: See "Other Notes" for Upgrade and Usage Instructions as well as other pert
 1. By default all posts in draft or pending review status will have public preview links that can be found diretly below the edit post box.
 1. To disable public post preview for a specific post uncheck the public preview post box and save the post.
 
-== Change Log ==
+== Changelog ==
 
 = 1.1 (2009-03-11): =
 * Don't limit public previews to posts in draft or pending status.  Just exclude posts in publish status.
