@@ -8,7 +8,7 @@ Version: 1.3
 Author URI: http://sivel.net/
 
         Copyright (c) 2009-2010 Matt Martz (http://sivel.net)
-        WordPress Reset is released under the GNU General Public License (GPL)
+        Public Post Preview is released under the GNU General Public License (GPL)
         http://www.gnu.org/licenses/gpl-2.0.txt
 */
 
