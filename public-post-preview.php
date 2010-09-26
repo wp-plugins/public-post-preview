@@ -6,6 +6,10 @@ Description: Enables you to give a link to anonymous users for public preview of
 Author: Matt Martz</a> and <a href='http://www.ginside.com/'>Jonathan Dingman</a>
 Version: 1.3
 Author URI: http://sivel.net/
+
+        Copyright (c) 2009-2010 Matt Martz (http://sivel.net)
+        WordPress Reset is released under the GNU General Public License (GPL)
+        http://www.gnu.org/licenses/gpl-2.0.txt
 */
 
 class Public_Post_Preview {
