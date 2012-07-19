@@ -1,5 +1,5 @@
 === Public Post Preview ===
-Contributors: sivel, jdingman
+Contributors: ocean90, sivel, jdingman
 Donate Link: http://sivel.net/donate
 Tags: public-post-preview, public, post, preview, posts
 Requires at least: 2.7
@@ -9,8 +9,6 @@ Stable tag: 1.3
 Enables you to give a link to anonymous users for public preview of a post before it is published.
 
 == Description ==
-
-= This plugin is no longer maintained. If you would like to become the maintainer of this plugin please contact the author. =
 
 Enables you to give a link to anonymous users for public preview of a post before it is published.
 
