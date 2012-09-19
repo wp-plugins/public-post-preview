@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Public Post Preview
- * Version: 2.1
+ * Version: 2.1.1
  * Description: Enables you to give a link to anonymous users for public preview of any post type before it is published.
  * Author: Dominik Schilling
  * Author URI: http://wphelper.de/
@@ -43,14 +43,15 @@ if ( ! class_exists( 'WP' ) ) {
  *
  * Used hooks:
  *  - pre_get_posts
+ *  - query_vars
+ *  - init
  *  - add_meta_boxes
  *  - save_post
  *  - posts_results
  *  - wp_ajax_public-post-preview
  *  - admin_enqueue_scripts
- *  - init
  *
- *  Inits at 'plugins_loaded' hook.
+ * Inits at 'plugins_loaded' hook.
  *
  */
 class DS_Public_Post_Preview {
@@ -64,14 +65,13 @@ class DS_Public_Post_Preview {
 	 * @since 1.0.0
 	 */
 	public static function init() {
+		add_action( 'init', array( __CLASS__, 'load_textdomain' ) );
+
 		if ( ! is_admin() ) {
 			add_filter( 'pre_get_posts', array( __CLASS__, 'show_public_preview' ) );
 
 			add_filter( 'query_vars', array( __CLASS__, 'add_query_var' ) );
 		} else {
-
-			add_action( 'init', array( __CLASS__, 'load_textdomain' ) );
-
 			add_action( 'add_meta_boxes', array( __CLASS__, 'register_meta_boxes' ) );
 
 			add_action( 'save_post', array( __CLASS__, 'register_public_preview' ), 20, 2 );
@@ -354,6 +354,9 @@ class DS_Public_Post_Preview {
 	 * @param array $posts The post to preview.
 	 */
 	public static function set_post_to_publish( $posts ) {
+		// Remove the filter again, otherwise it will be applied to other queries too.
+		remove_filter( 'posts_results', array( __CLASS__, 'set_post_to_publish' ), 10, 2 );
+
 		if ( empty( $posts ) )
 			return;
 
@@ -373,7 +376,7 @@ class DS_Public_Post_Preview {
 	 * @return int The time-dependent variable
 	 */
 	private static function nonce_tick() {
-		$nonce_life = apply_filters( 'ppp_nonce_life', 60 * 60 * 24 ); // 24 hours
+		$nonce_life = apply_filters( 'ppp_nonce_life', 60 * 60 * 48 ); // 48 hours
 
 		return ceil( time() / ( $nonce_life / 2 ) );
 	}
